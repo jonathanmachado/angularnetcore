@@ -1,24 +1,14 @@
-// import { Action } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 
-// export const ACTION_NAME =           '[MODEL_NAME] ActionName';
-// export const ACTION_NAME =           '[MODEL_NAME] ActionName';
+export const GET_MOVIES = '[Movies] - Get Movies';
+export const GET_MOVIES_SUCCESS = '[Movies] - Get Movies Success';
 
-// export class ActionName implements Action {
-//   readonly type = ACTION_NAME;
+export class GetMovies implements Action {
+  readonly type = GET_MOVIES;
+}
+export class GetMoviesSuccess implements Action {
+  readonly type = GET_MOVIES_SUCCESS;
+  constructor(public payload: any) {}
+}
 
-//   constructor(public payload: PAYLOAD_TYPE) { }
-// }
-
-// export class ActionName implements Action {
-//     readonly type = ACTION_NAME;
-  
-//     constructor(public payload: PAYLOAD_TYPE) { }
-//   }
-
-// /**
-//  * Export a type alias of all actions in this action group
-//  * so that reducers can easily compose action types
-//  */
-// export type Actions
-// = ActionName
-// | ActionName;
+export type Actions = GetMovies | GetMoviesSuccess;
