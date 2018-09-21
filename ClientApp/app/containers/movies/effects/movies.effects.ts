@@ -11,16 +11,17 @@ import { MoviesService } from './../services/movies.service';
 
 @Injectable()
 export class MoviesEffects {
-  constructor(private actions$: Actions, private moviesService: MoviesService) {}
+  constructor(
+    private actions$: Actions,
+    private moviesService: MoviesService
+  ) {}
 
   @Effect()
   getMovies$ = this.actions$.pipe(
     ofType(MoviesActions.GET_MOVIES),
     exhaustMap(() =>
       this.moviesService.getMovies().pipe(
-        map(data => {
-          console.log(data);
-        }),
+        map(data => new MoviesActions.GetMoviesSuccess(data)),
         catchError(() => of({ type: MoviesActions.GET_MOVIES + ' - Error' }))
       )
     )

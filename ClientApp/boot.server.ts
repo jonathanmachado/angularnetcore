@@ -1,4 +1,4 @@
-﻿import { enableProdMode } from '@angular/core';
+import { enableProdMode } from '@angular/core';
 import 'reflect-metadata';
 import { createTransferScript, IEngineOptions, ngAspnetCoreEngine } from '@nguniversal/aspnetcore-engine';
 import { createServerRenderer } from 'aspnet-prerendering';

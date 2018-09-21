@@ -14,6 +14,8 @@ import { Subscription } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { LinkService } from './shared/link.service';
 
+import { environment } from './../environments/environment';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -51,6 +53,8 @@ export class AppComponent implements OnInit, OnDestroy {
       `The Request object only really exists on the Server, but on the Browser we can at least see Cookies`
     );
     console.log(this.request);
+
+    console.log(environment.production);
   }
 
   ngOnInit() {
