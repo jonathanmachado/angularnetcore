@@ -1,9 +1,12 @@
 <div class="wrapper">
 
-  <div class="row mb-2">
+  <div class="row mb-2" lazy-load-images>
     <div class="col-md-2" *ngFor="let item of movies">
       <div class="card flex-md-col mb-4 shadow-sm h-md-250">
-        <img class="card-img-right flex-auto d-none d-lg-block" src="/images/movie_placeholder.png" />
+        <img class="card-img-right flex-auto d-none d-lg-block"
+          src="/images/movie_placeholder.png"
+          (error)="getDefaultImage($event)"
+          attr.data-src={{item.image_url}} />
         <div class="card-body d-flex flex-column text-center">
           <strong class="d-inline-block mb-2">{{ item.title }}</strong>
           <p>{{ item.blob.spanishGenre }}</p>

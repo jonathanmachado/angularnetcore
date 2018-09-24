@@ -13,6 +13,12 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AccordionModule } from 'ngx-bootstrap';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+// Components
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
@@ -21,12 +27,11 @@ import { HomeComponent } from './containers/home/home.component';
 import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { UsersComponent } from './containers/users/users.component';
+
+// Services
+import { CacheService } from './core/services/cache.service';
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
-
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 export function createTranslateLoader(http: HttpClient, baseHref) {
   // Temporary Azure hack
@@ -217,9 +222,8 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 50 })
-
   ],
-  providers: [LinkService, UserService, TranslateModule],
+  providers: [LinkService, UserService, TranslateModule, CacheService],
   bootstrap: [AppComponent]
 })
 export class AppModuleShared {}

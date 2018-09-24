@@ -7,6 +7,7 @@ import { reducer } from './reducers/movies.reducer';
 import { MoviesEffects } from './effects/movies.effects';
 
 import { Routing } from './routes/movies.routing';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 // Components
 import { LandingComponent } from './components/landing/landing.component';
@@ -16,7 +17,8 @@ import { LandingComponent } from './components/landing/landing.component';
     CommonModule,
     Routing,
     EffectsModule.forFeature([MoviesEffects]),
-    StoreModule.forFeature('movies', reducer)
+    StoreModule.forFeature('movies', reducer),
+    LazyLoadImagesModule
   ],
   declarations: [LandingComponent]
 })

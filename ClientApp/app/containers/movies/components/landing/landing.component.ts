@@ -46,4 +46,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   getMovies() {
     this.store.dispatch(new MoviesActions.GetMovies());
   }
+
+  getDefaultImage(event): void {
+    event.target.src = '/images/movie_placeholder.png';
+  }
 }
