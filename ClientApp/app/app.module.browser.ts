@@ -4,6 +4,7 @@ import { ORIGIN_URL, REQUEST } from '@nguniversal/aspnetcore-engine/tokens';
 import { PrebootModule } from 'preboot';
 import { AppComponent } from './app.component';
 import { AppModuleShared } from './app.module';
+import { BrowserCacheModule } from '@ngx-utils/cache/browser';
 
 export function getOriginUrl() {
   return window.location.origin;
@@ -19,7 +20,7 @@ export function getRequest() {
   imports: [
     PrebootModule.withConfig({ appRoot: 'app-root' }),
     BrowserAnimationsModule,
-
+    BrowserCacheModule.forRoot(),
     // Our Common AppModule
     AppModuleShared
   ],

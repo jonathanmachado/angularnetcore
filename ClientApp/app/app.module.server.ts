@@ -4,14 +4,15 @@ import { ServerModule } from '@angular/platform-server';
 import { PrebootModule } from 'preboot';
 import { AppComponent } from './app.component';
 import { AppModuleShared } from './app.module';
+import { ServerCacheModule } from '@ngx-utils/cache/server';
 
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
     // Our Common AppModule
     AppModuleShared,
-
     ServerModule,
+    ServerCacheModule.forRoot(),
     PrebootModule.withConfig({ appRoot: 'app-root' }),
     NoopAnimationsModule
 

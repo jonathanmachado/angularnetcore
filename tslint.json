@@ -68,7 +68,7 @@
     "no-inferrable-types": false,
     "no-input-rename": true,
     "no-internal-module": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-output-rename": true,
     "no-require-imports": false,
     "no-shadowed-variable": false,

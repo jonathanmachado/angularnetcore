@@ -16,6 +16,7 @@ namespace AspCoreServer.Controllers
   {
 
     [HttpGet]
+    [ResponseCache(Duration = 60)]
     public async Task<IActionResult> Get()
     {
 

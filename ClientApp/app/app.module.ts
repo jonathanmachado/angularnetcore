@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -29,9 +33,9 @@ import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { UsersComponent } from './containers/users/users.component';
 
 // Services
-import { CacheService } from './core/services/cache.service';
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
+import { CacheInterceptor } from './core/services/cache.interceptor';
 
 export function createTranslateLoader(http: HttpClient, baseHref) {
   // Temporary Azure hack
@@ -223,7 +227,16 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 50 })
   ],
-  providers: [LinkService, UserService, TranslateModule, CacheService],
+  providers: [
+    LinkService,
+    UserService,
+    TranslateModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: CacheInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModuleShared {}
